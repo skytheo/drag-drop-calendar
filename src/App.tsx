@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import { Calendar, EventInput } from '@fullcalendar/core';
+import { EventInput } from '@fullcalendar/core';
 
 function App() {
 
@@ -11,6 +11,7 @@ const [runDays, setRunDays] = useState<string[]>([]);
 const [bikeDays, setBikeDays] = useState<string[]>([]);
 const [date, setDate] = useState(new Date());
 const [events, setEvents] = useState<EventInput[]>([]);
+const start = new Date();
 
 
 useEffect(()=>{
@@ -68,6 +69,7 @@ const changeDate = (event:any) => {
         Date of race
         <input type='date' onChange={changeDate}/>
       </div>
+        {date > start &&
         <div>
           <div>
             Days a week of swimming:
@@ -100,6 +102,7 @@ const changeDate = (event:any) => {
             <button onClick={() => setBikeDays([...bikeDays, "6"])}>Sat</button>
           </div>
         </div>
+          }
           <div>
             <FullCalendar
               plugins={[dayGridPlugin]}
