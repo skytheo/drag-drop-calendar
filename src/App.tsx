@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import { EventInput } from '@fullcalendar/core';
+import getSwimDays from './swim';
+import getBikeDays from './bike';
+import getRunDays from './run';
 
 function App() {
 
@@ -11,55 +14,31 @@ const [runDays, setRunDays] = useState<string[]>([]);
 const [bikeDays, setBikeDays] = useState<string[]>([]);
 const [date, setDate] = useState(new Date());
 const [events, setEvents] = useState<EventInput[]>([]);
-const start = new Date();
 
 
 useEffect(()=>{
-  let temp = events.filter(x=> x.title != "Swimming");
-    setEvents([
-      ...temp,
-      {
-        start: new Date(),
-        end: date,
-        title: "Swimming",
-        daysOfWeek: swimDays,
-        color: "Blue"
-      },
-    ]);
+  setEvents(getSwimDays(events, swimDays, date));
 },[swimDays]);
 
 useEffect(()=>{
-  let temp = events.filter(x=> x.title != "Running");
-    setEvents([
-      ...temp,
-      {
-        start: new Date(),
-        end: date,
-        title: "Running",
-        daysOfWeek: runDays,
-        color: "Orange"
-      },
-    ]);
+  setEvents(getRunDays(events, runDays, date));
 },[runDays]);
 
 useEffect(()=>{
-  let temp = events.filter(x=> x.title != "Biking");
-    setEvents([
-      ...temp,
-      {
-        start: new Date(),
-        end: date,
-        title: "Biking",
-        daysOfWeek: bikeDays,
-        color: "Green"
-      },
-    ]);
+  setEvents(getBikeDays(events, swimDays, date));
 },[bikeDays]);
 
 const changeDate = (event:any) => {
   setDate(event.target.value)
 };
-
+//todo:
+//add types of workouts, see written notes
+//fix date
+//ability to add custom events?
+//add workouts to each event (don't forget 20% rule)
+//ability to drag and drop and delete events
+//tapering calculations, see data from 70.3
+//long long term export?
   return (
     <div className="App">
       <header>
@@ -69,7 +48,6 @@ const changeDate = (event:any) => {
         Date of race
         <input type='date' onChange={changeDate}/>
       </div>
-        {date > start &&
         <div>
           <div>
             Days a week of swimming:
@@ -102,7 +80,6 @@ const changeDate = (event:any) => {
             <button onClick={() => setBikeDays([...bikeDays, "6"])}>Sat</button>
           </div>
         </div>
-          }
           <div>
             <FullCalendar
               plugins={[dayGridPlugin]}
