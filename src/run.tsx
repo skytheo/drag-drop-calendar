@@ -1,5 +1,6 @@
 import { EventInput } from '@fullcalendar/core';
 import React, { useEffect, useState } from 'react';
+import Days from './days';
 
 const Run = (props: any) => {
 
@@ -22,15 +23,10 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventI
   ]
 }
 
-return (<div>
-    Days a week of running:
-    <button onClick={() => setRunDays([...runDays, "0"])}>Sun</button>
-    <button onClick={() => setRunDays([...runDays, "1"])}>Mon</button>
-    <button onClick={() => setRunDays([...runDays, "2"])}>Tue</button>
-    <button onClick={() => setRunDays([...runDays, "3"])}>Wed</button>
-    <button onClick={() => setRunDays([...runDays, "4"])}>Thu</button>
-    <button onClick={() => setRunDays([...runDays, "5"])}>Fri</button>
-    <button onClick={() => setRunDays([...runDays, "6"])}>Sat</button>
+return (
+  <div>
+    Days a week of running: 
+    <Days setDays={setRunDays} Days={runDays}/>
   </div>);
 }
 export default Run;

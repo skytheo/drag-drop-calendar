@@ -1,5 +1,6 @@
 import { EventInput } from '@fullcalendar/core';
 import React, { useEffect, useState } from 'react';
+import Days from './days';
 
 const Bike = (props: any) => {
 
@@ -22,16 +23,9 @@ const Bike = (props: any) => {
   }
 
   return (
-
     <div>
-      Days a week of biking:
-      <button onClick={() => setBikeDays([...bikeDays, "0"])}>Sun</button>
-      <button onClick={() => setBikeDays([...bikeDays, "1"])}>Mon</button>
-      <button onClick={() => setBikeDays([...bikeDays, "2"])}>Tue</button>
-      <button onClick={() => setBikeDays([...bikeDays, "3"])}>Wed</button>
-      <button onClick={() => setBikeDays([...bikeDays, "4"])}>Thu</button>
-      <button onClick={() => setBikeDays([...bikeDays, "5"])}>Fri</button>
-      <button onClick={() => setBikeDays([...bikeDays, "6"])}>Sat</button>
+      Days a week of biking: 
+      <Days setDays={setBikeDays} Days={bikeDays}/>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { EventInput } from '@fullcalendar/core';
 import React, { useEffect, useState } from 'react';
+import Days from './days';
 
 const Swim= (props: any)=>{
   const [swimDays, setSwimDays] = useState<string[]>([]);
@@ -24,14 +25,8 @@ const Swim= (props: any)=>{
 
   return (
     <div>
-      Days a week of swimming:
-      <button onClick={() => setSwimDays([...swimDays, "0"])}>Sun</button>
-      <button onClick={() => setSwimDays([...swimDays, "1"])}>Mon</button>
-      <button onClick={() => setSwimDays([...swimDays, "2"])}>Tue</button>
-      <button onClick={() => setSwimDays([...swimDays, "3"])}>Wed</button>
-      <button onClick={() => setSwimDays([...swimDays, "4"])}>Thu</button>
-      <button onClick={() => setSwimDays([...swimDays, "5"])}>Fri</button>
-      <button onClick={() => setSwimDays([...swimDays, "6"])}>Sat</button>
+      Days a week of swimming: 
+      <Days setDays={setSwimDays} Days={swimDays}/>
     </div>
   );
 }
