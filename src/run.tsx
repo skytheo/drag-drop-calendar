@@ -9,17 +9,56 @@ const Run = (props: any) => {
       props.setEvents(getRunDays(props.events, runDays, props.date));
     }, [runDays]);
 
-function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventInput[]{
-  let temp = events.filter(x=> x.title != "Running");
-  return [
-    ...temp,
-    {
+function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventInput[] {
+  let total = 0;
+  let newEvents = [];
+  if (RunDays.length >= 1) {
+    newEvents[0] = {
       start: new Date(),
       end: date,
       title: "Running",
-      daysOfWeek: RunDays,
-      color: "Orange"
-    },
+      daysOfWeek: [RunDays[0]],
+      color: "Green",
+      description: "Long Run"
+    };
+    total++;
+  }
+  if (RunDays.length >= 2) {
+    newEvents[total] = {
+      start: new Date(),
+      end: date,
+      title: "Running",
+      daysOfWeek: [RunDays[1]],
+      color: "Yellow",
+      description: "Tempo Run"
+    };
+    total++;
+    if (RunDays.length >= 5) {
+      newEvents[total] = {
+        start: new Date(),
+        end: date,
+        title: "Running",
+        daysOfWeek: [RunDays[2]],
+        color: "Yellow",
+        description: "Tempo Run"
+      };
+      total++;
+    }
+  }
+  if (total < RunDays.length) {
+    newEvents[total] = {
+      start: new Date(),
+      end: date,
+      title: "Running",
+      daysOfWeek: RunDays.length >= 5 ? RunDays.slice(3) : RunDays.slice(2),
+      color: "Orange",
+      description: "Maintenence Run"
+    };
+  }
+  let temp = events.filter(x => x.title != "Running");
+  return [
+    ...temp,
+    ...newEvents,
   ]
 }
 
