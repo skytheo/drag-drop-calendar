@@ -14,7 +14,8 @@ function App() {
 
 
   const changeDate = (event: any) => {
-    setDate(event.target.value)
+    setDate(event.target.value);
+    setEvents([{title:"Race Day", color:"black", editable:false, date: event.target.value, allDay:true}])
   };
 
   const changeType = (event: any) => {
@@ -26,7 +27,7 @@ function App() {
   //add workouts to each event (don't forget 20% rule)
   //ability to drag and drop and delete events
   //tapering calculations, see data from 70.3
-  //long long term export?
+  //long long term export to ical?
 
   return (
     <div className="App">

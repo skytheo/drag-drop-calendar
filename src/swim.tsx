@@ -13,8 +13,8 @@ const Swim = (props: any) => {
     let newEvents = [];
     if (swimDays.length >= 1) {
       newEvents[0] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Long Swim",
         daysOfWeek: [swimDays[0]],
         color: "#000099",
@@ -24,8 +24,8 @@ const Swim = (props: any) => {
     }
     if (swimDays.length >= 2) {
       newEvents[total] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Tempo Swim",
         daysOfWeek: [swimDays[1]],
         color: "#0080FF",
@@ -34,8 +34,8 @@ const Swim = (props: any) => {
       total++;
       if (swimDays.length >= 5) {
         newEvents[total] = {
-          start: new Date(),
-          end: date,
+          startRecur: new Date(),
+          endRecur: date,
           title: "Speed Swim",
           daysOfWeek: [swimDays[2]],
           color: "#0080FF",
@@ -46,8 +46,8 @@ const Swim = (props: any) => {
     }
     if (total < swimDays.length) {
       newEvents[total] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Maintenence Swim",
         daysOfWeek: swimDays.length >= 5 ? swimDays.slice(3) : swimDays.slice(2),
         color: "#0000FF",

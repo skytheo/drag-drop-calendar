@@ -14,8 +14,8 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventI
   let newEvents = [];
   if (RunDays.length >= 1) {
     newEvents[0] = {
-      start: new Date(),
-      end: date,
+      startRecur: new Date(),
+      endRecur: date,
       title: "Long Run",
       daysOfWeek: [RunDays[0]],
       color: "#006633",
@@ -25,8 +25,8 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventI
   }
   if (RunDays.length >= 2) {
     newEvents[total] = {
-      start: new Date(),
-      end: date,
+      startRecur: new Date(),
+      endRecur: date,
       title: "Speed Run",
       daysOfWeek: [RunDays[1]],
       color: "#00CC00",
@@ -35,8 +35,8 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventI
     total++;
     if (RunDays.length >= 5) {
       newEvents[total] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Tempo Run",
         daysOfWeek: [RunDays[2]],
         color: "#00CC00",
@@ -47,8 +47,8 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventI
   }
   if (total < RunDays.length) {
     newEvents[total] = {
-      start: new Date(),
-      end: date,
+      startRecur: new Date(),
+      endRecur: date,
       title: "Maintence Run",
       daysOfWeek: RunDays.length >= 5 ? RunDays.slice(3) : RunDays.slice(2),
       color: "#009900",

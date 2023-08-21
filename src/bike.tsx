@@ -13,8 +13,8 @@ const Bike = (props: any) => {
     let newEvents = [];
     if (BikeDays.length >= 1) {
       newEvents[0] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Long Bike",
         daysOfWeek: [BikeDays[0]],
         color: "#CC6600",
@@ -24,8 +24,8 @@ const Bike = (props: any) => {
     }
     if (BikeDays.length >= 2) {
       newEvents[total] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Tempo Bike",
         daysOfWeek: [BikeDays[1]],
         color: "#FFBB66",
@@ -34,8 +34,8 @@ const Bike = (props: any) => {
       total++;
       if (BikeDays.length >= 5) {
         newEvents[total] = {
-          start: new Date(),
-          end: date,
+          startRecur: new Date(),
+          endRecur: date,
           title: "Speed Bike",
           daysOfWeek: [BikeDays[2]],
           color: "#FFBB66",
@@ -46,8 +46,8 @@ const Bike = (props: any) => {
     }
     if (total < BikeDays.length) {
       newEvents[total] = {
-        start: new Date(),
-        end: date,
+        startRecur: new Date(),
+        endRecur: date,
         title: "Maintenence Bike",
         daysOfWeek: BikeDays.length >= 5 ? BikeDays.slice(3) : BikeDays.slice(2),
         color: "#FF8800",
