@@ -1,13 +1,19 @@
 const Days = (props: any) => {
-    return (
-    <>
-    <button onClick={() => props.setDays([...props.Days, "0"])}>Sun</button>
-    <button onClick={() => props.setDays([...props.Days, "1"])}>Mon</button>
-    <button onClick={() => props.setDays([...props.Days, "2"])}>Tue</button>
-    <button onClick={() => props.setDays([...props.Days, "3"])}>Wed</button>
-    <button onClick={() => props.setDays([...props.Days, "4"])}>Thu</button>
-    <button onClick={() => props.setDays([...props.Days, "5"])}>Fri</button>
-    <button onClick={() => props.setDays([...props.Days, "6"])}>Sat</button></>
-    );
+    function setDaysOnClick(day: string){
+        if(!props.Days.includes(day)){
+            props.setDays([...props.Days, day]);
+        } else {
+            props.setDays(props.Days.filter((x:string)=> x != day));
+        }
+    }
+    let names=["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let buttons = [];
+    for(let i =0; i< 7;i++){
+        buttons.push(
+        <button onClick={() => setDaysOnClick(i.toString())} 
+            className={props.Days.includes(i.toString()) ? "selected":undefined}>{names[i]}</button>
+        );
+    }
+    return <>{buttons}</>;
 }
 export default Days;

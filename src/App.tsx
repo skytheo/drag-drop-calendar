@@ -21,9 +21,7 @@ function App() {
     setType(event.target.value)
   };
   //todo:
-  //add types of workouts, see written notes
   //fix date
-  //ability turn off days, with visual que
   //ability to add custom events?
   //add workouts to each event (don't forget 20% rule)
   //ability to drag and drop and delete events

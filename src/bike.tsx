@@ -15,9 +15,9 @@ const Bike = (props: any) => {
       newEvents[0] = {
         start: new Date(),
         end: date,
-        title: "Biking",
+        title: "Long Bike",
         daysOfWeek: [BikeDays[0]],
-        color: "Blue",
+        color: "#CC6600",
         description: "Long Bike"
       };
       total++;
@@ -26,9 +26,9 @@ const Bike = (props: any) => {
       newEvents[total] = {
         start: new Date(),
         end: date,
-        title: "Biking",
+        title: "Tempo Bike",
         daysOfWeek: [BikeDays[1]],
-        color: "Yellow",
+        color: "#FFBB66",
         description: "Tempo Bike"
       };
       total++;
@@ -36,10 +36,10 @@ const Bike = (props: any) => {
         newEvents[total] = {
           start: new Date(),
           end: date,
-          title: "Biking",
+          title: "Speed Bike",
           daysOfWeek: [BikeDays[2]],
-          color: "Yellow",
-          description: "Tempo Bike"
+          color: "#FFBB66",
+          description: "Speed Bike"
         };
         total++;
       }
@@ -48,13 +48,13 @@ const Bike = (props: any) => {
       newEvents[total] = {
         start: new Date(),
         end: date,
-        title: "Biking",
+        title: "Maintenence Bike",
         daysOfWeek: BikeDays.length >= 5 ? BikeDays.slice(3) : BikeDays.slice(2),
-        color: "Green",
+        color: "#FF8800",
         description: "Maintenence Bike"
       };
     }
-    let temp = events.filter(x => x.title != "Biking");
+    let temp = events.filter(x => !x.title?.includes("Bike"));
     return [
       ...temp,
       ...newEvents,

@@ -15,9 +15,9 @@ const Swim = (props: any) => {
       newEvents[0] = {
         start: new Date(),
         end: date,
-        title: "Swimming",
+        title: "Long Swim",
         daysOfWeek: [swimDays[0]],
-        color: "Green",
+        color: "#000099",
         description: "Long Swim"
       };
       total++;
@@ -26,9 +26,9 @@ const Swim = (props: any) => {
       newEvents[total] = {
         start: new Date(),
         end: date,
-        title: "Swimming",
+        title: "Tempo Swim",
         daysOfWeek: [swimDays[1]],
-        color: "Yellow",
+        color: "#0080FF",
         description: "Tempo Swim"
       };
       total++;
@@ -36,10 +36,10 @@ const Swim = (props: any) => {
         newEvents[total] = {
           start: new Date(),
           end: date,
-          title: "Swimming",
+          title: "Speed Swim",
           daysOfWeek: [swimDays[2]],
-          color: "Yellow",
-          description: "Tempo Swim"
+          color: "#0080FF",
+          description: "Speed Swim"
         };
         total++;
       }
@@ -48,13 +48,13 @@ const Swim = (props: any) => {
       newEvents[total] = {
         start: new Date(),
         end: date,
-        title: "Swimming",
+        title: "Maintenence Swim",
         daysOfWeek: swimDays.length >= 5 ? swimDays.slice(3) : swimDays.slice(2),
-        color: "Blue",
+        color: "#0000FF",
         description: "Maintenence Swim"
       };
     }
-    let temp = events.filter(x => x.title != "Swimming");
+    let temp = events.filter(x => !x.title?.includes("Swim"));
     return [
       ...temp,
       ...newEvents,
