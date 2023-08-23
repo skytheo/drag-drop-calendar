@@ -6,10 +6,10 @@ const Run = (props: any) => {
 
     const [runDays, setRunDays] = useState<string[]>([]);
     useEffect(() => {
-      props.setEvents(getRunDays(props.events, runDays, props.date));
+      props.setEvents(getRunDays(props.events, runDays, props.date, props.distance));
     }, [runDays]);
 
-function getRunDays(events: EventInput[], RunDays: string[], date: Date): EventInput[] {
+function getRunDays(events: EventInput[], RunDays: string[], date: Date, distance: string): EventInput[] {
   let total = 0;
   let newEvents = [];
   if (RunDays.length >= 1) {

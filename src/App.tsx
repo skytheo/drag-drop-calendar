@@ -22,10 +22,11 @@ function App() {
     setType(event.target.value)
   };
   //todo:
-  //fix date
   //ability to add custom events?
   //add workouts to each event (don't forget 20% rule)
+  //mertic vs imerial, button too
   //ability to drag and drop and delete events
+  //import calendar
   //tapering calculations, see data from 70.3
   //long long term export to ical?
 
@@ -50,16 +51,20 @@ function App() {
       </div>
       {type !== "" &&
         <div>
-          <Swim date={date} setEvents={setEvents} events={events} />
-          <Bike date={date} setEvents={setEvents} events={events} />
-          <Run date={date} setEvents={setEvents} events={events} />
+          <Swim date={date} setEvents={setEvents} events={events} distance={type}/>
+          <Bike date={date} setEvents={setEvents} events={events} distance={type} />
+          <Run date={date} setEvents={setEvents} events={events} distance={type} />
         </div>
       }
       <div>
         <FullCalendar
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
-          events={events} />
+          events={events} 
+          eventClick={(e) => alert(e.event.title +": " + e.event.extendedProps.description)}
+          droppable={true}
+          editable={true}
+          />
       </div>
     </div>
   );

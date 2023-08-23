@@ -6,9 +6,9 @@ const Bike = (props: any) => {
 
   const [bikeDays, setBikeDays] = useState<string[]>([]);
   useEffect(() => {
-    props.setEvents(getBikeDays(props.events, bikeDays, props.date));
+    props.setEvents(getBikeDays(props.events, bikeDays, props.date, props.distance));
   }, [bikeDays]);
-  function getBikeDays(events: EventInput[], BikeDays: string[], date: Date): EventInput[] {
+  function getBikeDays(events: EventInput[], BikeDays: string[], date: Date, distance: string): EventInput[] {
     let total = 0;
     let newEvents = [];
     if (BikeDays.length >= 1) {
@@ -18,7 +18,7 @@ const Bike = (props: any) => {
         title: "Long Bike",
         daysOfWeek: [BikeDays[0]],
         color: "#CC6600",
-        description: "Long Bike"
+        description: ""
       };
       total++;
     }
@@ -29,7 +29,7 @@ const Bike = (props: any) => {
         title: "Tempo Bike",
         daysOfWeek: [BikeDays[1]],
         color: "#FFBB66",
-        description: "Tempo Bike"
+        description: ""
       };
       total++;
       if (BikeDays.length >= 5) {
@@ -39,7 +39,7 @@ const Bike = (props: any) => {
           title: "Speed Bike",
           daysOfWeek: [BikeDays[2]],
           color: "#FFBB66",
-          description: "Speed Bike"
+          description: ""
         };
         total++;
       }
@@ -51,7 +51,7 @@ const Bike = (props: any) => {
         title: "Maintenence Bike",
         daysOfWeek: BikeDays.length >= 5 ? BikeDays.slice(3) : BikeDays.slice(2),
         color: "#FF8800",
-        description: "Maintenence Bike"
+        description: ""
       };
     }
     let temp = events.filter(x => !x.title?.includes("Bike"));

@@ -5,12 +5,13 @@ import Days from './days';
 const Swim = (props: any) => {
   const [swimDays, setSwimDays] = useState<string[]>([]);
   useEffect(() => {
-    props.setEvents(getSwimDays(props.events, swimDays, props.date));
-  }, [swimDays]);
+    props.setEvents(getSwimDays(props.events, swimDays, props.date, props.distance));
+  }, [swimDays, props.date]);
 
-  function getSwimDays(events: EventInput[], swimDays: string[], date: Date): EventInput[] {
+  function getSwimDays(events: EventInput[], swimDays: string[], date: Date, distance: string): EventInput[] {
     let total = 0;
     let newEvents = [];
+
     if (swimDays.length >= 1) {
       newEvents[0] = {
         startRecur: new Date(),
@@ -18,7 +19,7 @@ const Swim = (props: any) => {
         title: "Long Swim",
         daysOfWeek: [swimDays[0]],
         color: "#000099",
-        description: "Long Swim"
+        description: ""
       };
       total++;
     }
@@ -29,7 +30,7 @@ const Swim = (props: any) => {
         title: "Tempo Swim",
         daysOfWeek: [swimDays[1]],
         color: "#0080FF",
-        description: "Tempo Swim"
+        description: ""
       };
       total++;
       if (swimDays.length >= 5) {
@@ -39,7 +40,7 @@ const Swim = (props: any) => {
           title: "Speed Swim",
           daysOfWeek: [swimDays[2]],
           color: "#0080FF",
-          description: "Speed Swim"
+          description: ""
         };
         total++;
       }
@@ -51,7 +52,7 @@ const Swim = (props: any) => {
         title: "Maintenence Swim",
         daysOfWeek: swimDays.length >= 5 ? swimDays.slice(3) : swimDays.slice(2),
         color: "#0000FF",
-        description: "Maintenence Swim"
+        description: ""
       };
     }
     let temp = events.filter(x => !x.title?.includes("Swim"));
