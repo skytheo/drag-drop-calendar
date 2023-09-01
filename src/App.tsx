@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <header className='App-header'>
-        Triathlon Calendar calculator
+        Triathlon Calendar
       </header>
       <div className='parent'>
         <div className='child'>Type of Race: </div>
