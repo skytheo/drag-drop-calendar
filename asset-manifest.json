@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tri-calendar/static/css/main.b21ec587.css",
+    "main.js": "/tri-calendar/static/js/main.3167c824.js",
+    "index.html": "/tri-calendar/index.html",
+    "main.b21ec587.css.map": "/tri-calendar/static/css/main.b21ec587.css.map",
+    "main.3167c824.js.map": "/tri-calendar/static/js/main.3167c824.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b21ec587.css",
+    "static/js/main.3167c824.js"
+  ]
+}
