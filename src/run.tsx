@@ -65,8 +65,8 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date, distanc
 }
 
 return (
-  <div>
-    Days a week of running: 
+  <div className='parent'>
+    <div className='child'>Days a week of running: </div>
     <Days setDays={setRunDays} Days={runDays}/>
   </div>);
 }

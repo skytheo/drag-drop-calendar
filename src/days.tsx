@@ -14,6 +14,6 @@ const Days = (props: any) => {
             className={props.Days.includes(i.toString()) ? "selected":"unselected"}>{names[i]}</button>
         );
     }
-    return <div>{buttons}</div>;
+    return <div className="child">{buttons}</div>;
 }
 export default Days;

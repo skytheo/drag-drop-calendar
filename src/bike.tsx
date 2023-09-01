@@ -64,8 +64,8 @@ const Bike = (props: any) => {
   }
 
   return (
-    <div>
-      Days a week of biking: 
+    <div className='parent'>
+      <div className='child'>Days a week of biking: </div>
       <Days setDays={setBikeDays} Days={bikeDays}/>
     </div>
   );

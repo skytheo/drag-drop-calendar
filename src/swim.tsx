@@ -65,8 +65,8 @@ const Swim = (props: any) => {
   }
 
   return (
-    <div>
-      Days a week of swimming:
+    <div className='parent'>
+      <div className='child'>Days a week of swimming:</div>
       <Days setDays={setSwimDays} Days={swimDays} />
     </div>
   );
