@@ -11,9 +11,9 @@ const Days = (props: any) => {
     for(let i =0; i< 7;i++){
         buttons.push(
         <button onClick={() => setDaysOnClick(i.toString())} 
-            className={props.Days.includes(i.toString()) ? "selected":undefined}>{names[i]}</button>
+            className={props.Days.includes(i.toString()) ? "selected":"unselected"}>{names[i]}</button>
         );
     }
-    return <>{buttons}</>;
+    return <div>{buttons}</div>;
 }
 export default Days;

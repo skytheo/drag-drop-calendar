@@ -35,11 +35,11 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className='App-header'>
         Triathlon Calendar calculator
       </header>
       <div>
-        Type of Race:
+        Type of Race: 
         <select onChange={changeType}>
           <option disabled selected> -- select an option -- </option>
           <option value="Sprint">Sprint</option>
@@ -49,7 +49,7 @@ function App() {
         </select>
       </div>
       <div>
-        Date of race
+        Date of race: 
         <input type='date' onChange={changeDate} />
       </div>
       {type !== "" &&
