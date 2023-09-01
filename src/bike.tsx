@@ -1,6 +1,7 @@
 import { EventInput } from '@fullcalendar/core';
 import React, { useEffect, useState } from 'react';
 import Days from './days';
+import { setWorkouts } from './distances';
 
 const Bike = (props: any) => {
 
@@ -18,7 +19,7 @@ const Bike = (props: any) => {
         title: "Long Bike",
         daysOfWeek: [BikeDays[0]],
         color: "#CC6600",
-        description: ""
+        description: "Long Bike"
       };
       total++;
     }
@@ -29,7 +30,7 @@ const Bike = (props: any) => {
         title: "Tempo Bike",
         daysOfWeek: [BikeDays[1]],
         color: "#FFBB66",
-        description: ""
+        description: "Tempo Bike"
       };
       total++;
       if (BikeDays.length >= 5) {
@@ -39,7 +40,7 @@ const Bike = (props: any) => {
           title: "Speed Bike",
           daysOfWeek: [BikeDays[2]],
           color: "#FFBB66",
-          description: ""
+          description: "Speed Bike"
         };
         total++;
       }
@@ -51,10 +52,11 @@ const Bike = (props: any) => {
         title: "Maintenence Bike",
         daysOfWeek: BikeDays.length >= 5 ? BikeDays.slice(3) : BikeDays.slice(2),
         color: "#FF8800",
-        description: ""
+        description: "Maintenence Bike"
       };
     }
     let temp = events.filter(x => !x.title?.includes("Bike"));
+    //newEvents = setWorkouts(newEvents, distance, bikeDays.length, date, "bike");
     return [
       ...temp,
       ...newEvents,

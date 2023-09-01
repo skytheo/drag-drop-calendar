@@ -1,6 +1,7 @@
 import { EventInput } from '@fullcalendar/core';
 import React, { useEffect, useState } from 'react';
 import Days from './days';
+import { setWorkouts } from './distances';
 
 const Run = (props: any) => {
 
@@ -30,7 +31,7 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date, distanc
       title: "Speed Run",
       daysOfWeek: [RunDays[1]],
       color: "#00CC00",
-      description: "Tempo Run"
+      description: "Speed Run"
     };
     total++;
     if (RunDays.length >= 5) {
@@ -55,6 +56,7 @@ function getRunDays(events: EventInput[], RunDays: string[], date: Date, distanc
       description: "Maintenence Run"
     };
   }
+  //newEvents = setWorkouts(newEvents, distance, runDays.length, date, "run");
   let temp = events.filter(x => !x.title?.includes("Run"));
   return [
     ...temp,

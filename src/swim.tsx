@@ -1,6 +1,7 @@
 import { EventInput } from '@fullcalendar/core';
 import React, { useEffect, useState } from 'react';
 import Days from './days';
+import { setWorkouts } from './distances';
 
 const Swim = (props: any) => {
   const [swimDays, setSwimDays] = useState<string[]>([]);
@@ -19,7 +20,7 @@ const Swim = (props: any) => {
         title: "Long Swim",
         daysOfWeek: [swimDays[0]],
         color: "#000099",
-        description: ""
+        description: "Long Swim"
       };
       total++;
     }
@@ -30,7 +31,7 @@ const Swim = (props: any) => {
         title: "Tempo Swim",
         daysOfWeek: [swimDays[1]],
         color: "#0080FF",
-        description: ""
+        description: "Tempo Swim"
       };
       total++;
       if (swimDays.length >= 5) {
@@ -40,7 +41,7 @@ const Swim = (props: any) => {
           title: "Speed Swim",
           daysOfWeek: [swimDays[2]],
           color: "#0080FF",
-          description: ""
+          description: "Speed Swim"
         };
         total++;
       }
@@ -52,10 +53,11 @@ const Swim = (props: any) => {
         title: "Maintenence Swim",
         daysOfWeek: swimDays.length >= 5 ? swimDays.slice(3) : swimDays.slice(2),
         color: "#0000FF",
-        description: ""
+        description: "Maintenence Swim"
       };
     }
     let temp = events.filter(x => !x.title?.includes("Swim"));
+    //newEvents = setWorkouts(newEvents, distance, swimDays.length, date, "swim");
     return [
       ...temp,
       ...newEvents,

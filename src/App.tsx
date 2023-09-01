@@ -6,12 +6,15 @@ import { EventInput } from '@fullcalendar/core';
 import Swim from './swim';
 import Bike from './bike';
 import Run from './run';
+import Popup from 'reactjs-popup';
 
 function App() {
   const [date, setDate] = useState(new Date());
   const [events, setEvents] = useState<EventInput[]>([]);
   const [type, setType] = useState("");
-
+  const [open, setOpen] = React.useState(false);
+  const [description, setDescription] = React.useState("");
+  const [title, setTitle] = React.useState("");
 
   const changeDate = (event: any) => {
     setDate(event.target.value);
@@ -23,8 +26,8 @@ function App() {
   };
   //todo:
   //ability to add custom events?
-  //add workouts to each event (don't forget 20% rule)
-  //mertic vs imerial, button too
+  //add workouts to each event (don't forget 20% rule) need to remove recurring events to do this
+  //mertic vs imerial, button to switch 
   //ability to drag and drop and delete events
   //import calendar
   //tapering calculations, see data from 70.3
@@ -61,10 +64,17 @@ function App() {
           plugins={[dayGridPlugin]}
           initialView="dayGridMonth"
           events={events} 
-          eventClick={(e) => alert(e.event.title +": " + e.event.extendedProps.description)}
+          eventClick={(e) => {setTitle(e.event.title); setDescription(e.event.extendedProps.description); setOpen(true);}}
           droppable={true}
           editable={true}
           />
+        <Popup open={open} modal onClose={()=> setOpen(false)}>
+          <div className="modal">
+            <div className="header">{title}</div>
+            <div className="content">{description}</div>
+            <button className="close" onClick={() => setOpen(false)}>x</button>
+          </div>
+        </Popup>
       </div>
     </div>
   );

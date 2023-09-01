@@ -1,9 +1,11 @@
-export function getDistances(distance: string): number[] {
-    const sprintSwimStart = 0;
+import { EventInput } from "@fullcalendar/core";
+
+function getDistances(distance: string): number[] {
+    const sprintSwimStart = 1;
     const sprintSwimEnd = 750;
-    const sprintBikeStart = 0;
+    const sprintBikeStart = 1;
     const sprintBikeEnd = 12.5;
-    const sprintRunStart = 0;
+    const sprintRunStart = 1;
     const sprintRunEnd = 3.1;
 
     const olympicSwimStart = sprintSwimEnd;
@@ -36,12 +38,34 @@ export function getDistances(distance: string): number[] {
     }
 }
 
-export function calculatePercent(date:Date, distance: string):number{
-    let weeks = Math.round((date.getTime() - Date.now())/1000*60*60*24*7);
+function calculatePercent(date:Date, distance: string):number{
+    let weeks = Math.round((new Date(date).getTime() - Date.now())/(1000*60*60*24*7));
     let taper= distance === "70.3" ? 2 : distance === "140.6" ? 3 : 1;
     let percent = 1/(weeks - (weeks-taper)/4);
-    if(percent > 25){//fix once we have a starting point
-      alert("You have chosen a date that would require more than 20% increase week over week which is not recommended");
-    }
     return percent;
+}
+
+//track week #? or just if rest week
+//track index in tempo and speed arrays for each 
+//just say pace per type of race not exact numbers
+
+//called once by each sport, numdays is the number of days each week that sport is done, date is race date
+export function setWorkouts(events: EventInput[], distance: string, numDays: number, date: Date, type: string): EventInput[]{
+    let dists = getDistances(distance);
+    let dist = type === "swim" ? dists[0]: type=== "bike"? dists[2]: dists[4];
+    //let end = type === "swim"? dists[1]: type === "bike"? dists[3]: dists[5];
+
+    let week =0;
+    let percent = calculatePercent(date, distance);
+    // how to get all events in a recurrent event to set titles
+
+    while(week<events.length){
+        if(numDays == 1){
+            events[week].title = events[week].title + ": " + dist.toString() + (type === "swim" ? " m" : " mi");
+        }else {
+        }
+        dist += dist*percent;
+        week+=numDays;
+    }
+    return events;
 }
