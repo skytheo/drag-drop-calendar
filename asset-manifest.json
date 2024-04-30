@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/tri-calendar/static/css/main.01632951.css",
-    "main.js": "/tri-calendar/static/js/main.455a3fba.js",
+    "main.js": "/tri-calendar/static/js/main.b55c7702.js",
     "index.html": "/tri-calendar/index.html",
     "main.01632951.css.map": "/tri-calendar/static/css/main.01632951.css.map",
-    "main.455a3fba.js.map": "/tri-calendar/static/js/main.455a3fba.js.map"
+    "main.b55c7702.js.map": "/tri-calendar/static/js/main.b55c7702.js.map"
   },
   "entrypoints": [
     "static/css/main.01632951.css",
-    "static/js/main.455a3fba.js"
+    "static/js/main.b55c7702.js"
   ]
 }
