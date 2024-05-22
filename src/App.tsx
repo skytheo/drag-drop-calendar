@@ -17,13 +17,14 @@ function App() {
   const [title, setTitle] = React.useState("");
 
   const changeDate = (event: any) => {
-    setDate(event.target.value);
+    setDate(new Date(event.target.value));
     setEvents([{title:"Race Day", color:"black", editable:false, date: event.target.value, allDay:true}])
   };
 
   const changeType = (event: any) => {
     setType(event.target.value)
   };
+  
   //todo:
   //ability to add custom events?
   //add workouts to each event (don't forget 20% rule) need to remove recurring events to do this
@@ -40,8 +41,8 @@ function App() {
       </header>
       <div className='parent'>
         <div className='child'>Type of Race: </div>
-        <select onChange={changeType} className='child'>
-          <option disabled selected> -- select an option -- </option>
+        <select onChange={changeType} className='child' defaultValue={"empty"}>
+          <option disabled value="empty"> -- select an option -- </option>
           <option value="Sprint">Sprint</option>
           <option value="Olympic">Olympic/Internatioal</option>
           <option value="70.3">Half/70.3</option>

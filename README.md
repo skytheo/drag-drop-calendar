@@ -10,8 +10,8 @@ After you clone the code to your local enviornment using git clone, run "npm ins
 
 1. Create branch and name it something unique
 2. Make your changes
-3. Run it locally
-4. Manual testing to make sure nothing broke
+3. Run it locally 'npm run build'
+4. Manual testing to make sure nothing broke 'npm run start'
 5. Push you branch (can be done anytime after 1.)
 6. Create an MR
 7. Once approved, merge it into main

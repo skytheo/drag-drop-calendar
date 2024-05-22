@@ -57,7 +57,7 @@ const Swim = (props: any) => {
       };
     }
     let temp = events.filter(x => !x.title?.includes("Swim"));
-    //newEvents = setWorkouts(newEvents, distance, swimDays.length, date, "swim");
+    newEvents = setWorkouts(events, distance, swimDays.length, date, "swim");
     return [
       ...temp,
       ...newEvents,

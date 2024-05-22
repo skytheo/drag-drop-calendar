@@ -3,7 +3,7 @@ const Days = (props: any) => {
         if(!props.Days.includes(day)){
             props.setDays([...props.Days, day]);
         } else {
-            props.setDays(props.Days.filter((x:string)=> x != day));
+            props.setDays(props.Days.filter((x:string)=> x !== day));
         }
     }
     let names=["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
